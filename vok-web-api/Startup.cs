@@ -37,6 +37,7 @@ namespace vok_web_api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<ILieferscheinStore>(_ => new LieferscheinStore());
+            services.AddScoped<IRechnungStore>(_ => new RechnungStore());
 
             services.AddApplicationInsightsTelemetry(Configuration);
             services.AddMvc();
@@ -65,6 +66,8 @@ namespace vok_web_api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 
             app.UseApplicationInsightsRequestTelemetry();
             app.UseApplicationInsightsExceptionTelemetry();
