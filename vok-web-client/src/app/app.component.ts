@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Http } from  '@angular/http';
+
+import { GridComponent } from '@progress/kendo-angular-grid';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +12,11 @@ export class AppComponent {
   public lieferscheine: any[];
 
   constructor(private http: Http) { }
+
+  @ViewChild(GridComponent)
+  set grid(g: GridComponent) {
+    console.log(g);
+  }
 
   public loadLieferscheine() {
     this.http.get("https://pcm-prototype.azurewebsites.net/api/lieferscheine")
