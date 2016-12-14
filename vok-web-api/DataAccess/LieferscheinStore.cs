@@ -10,17 +10,17 @@ namespace vok_web_api.DataAccess
     {
         public async Task<IEnumerable<LieferscheinAggregiert>> GetAllAsync()
         {
-            using (var conn = new SqlConnection("Server=tcp:pcm-prototype-server.database.windows.net,1433;Initial Catalog=vok;Persist Security Info=False;User ID=...;Password=...;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
+            using (var conn = new SqlConnection(StoreConstants.DbConnectionString))
             {
                 await conn.OpenAsync();
 
                 var result = await conn.QueryAsync<LieferscheinAggregiert>(@"
-                    select	ls.DSID, ls.Lieferscheinnummer, 'Lieferant ' + ls.Lieferantennummer as Lieferantenname,
+                    select	ls.DSID, ls.Lieferscheinnummer, 'Lieferant ' + cast(ls.MaKredId as varchar(max)) as Lieferantenname,
 		                    ls.Liefertermin, coalesce(sum(p.Preis * p.Menge), 0) as SummeNetto,
 		                    coalesce(sum(p.Preis * p.Menge * (1 + p.Steuersatz)), 0) as SummeBrutto
                     from	dbo.tblVkoLs ls
 		                    inner join dbo.tblVKoLsPos p on p.LsId = ls.DSID
-                    group by ls.DSID, ls.Lieferscheinnummer, ls.Lieferantennummer,
+                    group by ls.DSID, ls.Lieferscheinnummer, ls.MaKredId,
 		                    ls.Liefertermin");
 
                 return result;

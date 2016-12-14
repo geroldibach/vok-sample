@@ -2,16 +2,6 @@
 
 <button type="button" (click)="loadLieferscheine()">Lieferscheine laden</button>
 
-<table>
-  <tbody>
-    <tr *ngFor="let ls of lieferscheine">
-      <td>{{ ls.lieferscheinnummer }}</td>
-      <td>{{ ls.lieferantenname }}</td>
-      <td>{{ ls.liefertermin }}</td>
-      <td>{{ ls.summeNetto }}</td>
-      <td>{{ ls.summeBrutto }}</td>
-    </tr>
-  </tbody>
-</table>
-
-
+<kendo-grid [data]="lieferscheine">
+  
+</kendo-grid>

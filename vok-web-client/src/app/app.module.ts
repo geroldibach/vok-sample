@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
+import { GridModule } from '@progress/kendo-angular-grid';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -12,7 +14,9 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+
+    GridModule
   ],
   providers: [],
   bootstrap: [AppComponent]
