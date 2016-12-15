@@ -6,10 +6,16 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 
 import { GridModule } from '@progress/kendo-angular-grid';
+import { LieferscheineComponent } from './lieferscheine/lieferscheine.component';
+import { LieferscheinStoreService } from './lieferschein-store.service';
+import { RechnungStoreService } from './rechnung-store.service';
+import { RechnungenComponent } from './rechnungen/rechnungen.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LieferscheineComponent,
+    RechnungenComponent
   ],
   imports: [
     BrowserModule,
@@ -18,7 +24,10 @@ import { GridModule } from '@progress/kendo-angular-grid';
 
     GridModule
   ],
-  providers: [],
+  providers: [
+    LieferscheinStoreService,
+    RechnungStoreService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

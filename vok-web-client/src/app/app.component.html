@@ -1,13 +1,13 @@
-<h1>Vorkontierung</h1>
+<div class="header">
+    <h1>Vorkontierung</h1>
+</div>
 
 <div class="container">
-
     <div class="lieferscheine">
-        <button type="button" (click)="loadLieferscheine()">Lieferscheine laden</button>
-        <kendo-grid id="lieferscheine-grid" [data]="lieferscheine" [scrollable]="'true'" [height]="200"></kendo-grid>
+        <app-lieferscheine></app-lieferscheine>
     </div>
-    
-    <div class="rechnungen">
 
+    <div class="rechnungen">
+        <app-rechnungen></app-rechnungen>
     </div>
 </div>

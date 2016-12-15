@@ -9,17 +9,27 @@ html, body {
   overflow-x: hidden;
 }
 
+div {
+  box-sizing: border-box;
+}
+
+.header {
+  margin-top: 10px;
+  height: 40px;
+  overflow: hidden;
+}
+
+.header h1 {
+  margin: 0;
+}
+
 .container {
   display: table;
   width: 100%;
-  height: 100%;
+  height: calc(100% - 51px);
 }
 
 .lieferscheine, .rechnungen {
   display: table-cell;
   width: 50%;
-}
-
-.rechnungen {
-  background: grey;
 }
