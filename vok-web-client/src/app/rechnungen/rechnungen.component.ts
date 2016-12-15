@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { RechnungStoreService, IRechnungAggregiert } from '../rechnung-store.service';
 
 @Component({
@@ -6,18 +6,22 @@ import { RechnungStoreService, IRechnungAggregiert } from '../rechnung-store.ser
   templateUrl: './rechnungen.component.html',
   styleUrls: ['./rechnungen.component.css']
 })
-export class RechnungenComponent implements OnInit {
+export class RechnungenComponent implements OnChanges {
+  @Input() public lieferantenname: string;
+
   public rechnungen: IRechnungAggregiert[];
 
   constructor(private rechnungStore: RechnungStoreService) { }
 
-  ngOnInit() {
-    this.loadRechnungen();
+  ngOnChanges(changes: SimpleChanges) {
+    const lieferantennameChange = changes["lieferantenname"]; 
+    if (lieferantennameChange.currentValue !== lieferantennameChange.previousValue) {
+      this.loadRechnungen(lieferantennameChange.currentValue);
+    }
   }
 
-  public loadRechnungen() {
-    this.rechnungStore.loadRechnungen("Lieferant 128560")
+  public loadRechnungen(lieferantenname: string) {
+    this.rechnungStore.loadRechnungen(lieferantenname)
       .forEach(re => this.rechnungen = re);
   }
-
 }

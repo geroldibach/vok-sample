@@ -1,0 +1,20 @@
+table {
+    font-size: 6pt;
+}
+
+td.lieferscheinnummer {
+    min-width: 50px;
+}
+
+td.lieferantenname {
+    min-width: 75px;
+}
+
+td.liefertermin {
+    min-width: 45px;
+}
+
+td.summeNetto, td.summeBrutto {
+    text-align: right;
+    min-width: 40px;
+}

@@ -1,0 +1,17 @@
+table {
+    font-size: 6pt;
+}
+
+td.lieferantenname {
+    min-width: 75px;
+}
+
+td.rechnungsnummer {
+    min-width: 20px;
+    text-align: right;
+}
+
+td.betrag {
+    text-align: right;
+    min-width: 40px;
+}

@@ -4,10 +4,10 @@
 
 <div class="container">
     <div class="lieferscheine">
-        <app-lieferscheine></app-lieferscheine>
+        <app-lieferscheine (lieferantenname)="onLieferantennameChanged($event)"></app-lieferscheine>
     </div>
 
     <div class="rechnungen">
-        <app-rechnungen></app-rechnungen>
+        <app-rechnungen [lieferantenname]="lieferantenname"></app-rechnungen>
     </div>
 </div>

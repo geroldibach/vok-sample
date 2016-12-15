@@ -1,2 +1,18 @@
 <button type="button" (click)="loadRechnungen()">Aktualisieren</button>
-<kendo-grid id="rechnungen-grid" [data]="rechnungen" [scrollable]="true" [height]="250"></kendo-grid>
+<!--<kendo-grid id="rechnungen-grid" [data]="rechnungen" [scrollable]="true" [height]="250"></kendo-grid>-->
+<table>
+    <thead>
+        <tr>
+            <th>Lief.Name</th>
+            <th>Re.#</th>
+            <th>Betrag</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let ls of rechnungen">
+            <td class="lieferantenname">{{ ls.lieferantenname }}</td>
+            <td class="rechnungsnummer">{{ ls.rechnungsnummer }}</td>
+            <td class="betrag">{{ ls.betrag | currency:'EUR':true:'1.2' }}</td>
+        </tr>        
+    </tbody>
+</table>
