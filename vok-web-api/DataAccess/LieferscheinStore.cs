@@ -20,12 +20,11 @@ namespace vok_web_api.DataAccess
 
         public async Task<IEnumerable<LieferscheinAggregiert>> GetAllAsync()
         {
-            var startTime = DateTime.UtcNow;
-            var timer = Stopwatch.StartNew();
-            var success = false;
-            try
-            {
-                var connectionString = await configurationReader.GetSecretAsync("vok-database");
+            var connectionString = await this.ExecuteWithDependencyTracking(
+                async () => await configurationReader.GetSecretAsync("vok-database"),
+                "KeyVault", "Reading DB connection string");
+
+            return await this.ExecuteWithDependencyTracking(async () => {
                 using (var conn = new SqlConnection(connectionString))
                 {
                     await conn.OpenAsync();
@@ -39,14 +38,25 @@ namespace vok_web_api.DataAccess
                     group by ls.DSID, ls.Lieferscheinnummer, ls.MaKredId,
 		                    ls.Liefertermin");
 
-                    success = true;
                     return result;
                 }
+            }, "DB", "Alle Lieferscheine laden");
+        }
+
+        private async Task<T> ExecuteWithDependencyTracking<T>(Func<Task<T>> body,
+            string resource, string message)
+        {
+            var startTime = DateTime.UtcNow;
+            var timer = Stopwatch.StartNew();
+            var success = false;
+            try
+            {
+                return await body();
             }
             finally
             {
                 timer.Stop();
-                new TelemetryClient().TrackDependency("DB", "Alle Lieferscheine laden", startTime, timer.Elapsed, success);
+                new TelemetryClient().TrackDependency(resource, message, startTime, timer.Elapsed, success);
             }
         }
     }

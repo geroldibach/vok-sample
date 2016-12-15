@@ -42,7 +42,6 @@ namespace vok_web_api
             services.AddScoped<ILieferscheinStore>(_ => new LieferscheinStore(configurationReader));
             services.AddScoped<IRechnungStore>(_ => new RechnungStore(configurationReader));
 
-
             services.AddApplicationInsightsTelemetry(Configuration);
             services.AddMvc();
 
