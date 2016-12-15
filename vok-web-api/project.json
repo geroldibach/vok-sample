@@ -14,8 +14,9 @@
     "Dapper": "1.50.2",
     "Microsoft.AspNetCore.Mvc": "1.1.0",
     "Swashbuckle": "6.0.0-beta902",
-    "Microsoft.Azure.KeyVault.Core": "2.0.4",
-    "Microsoft.AspNetCore.Cors": "1.1.0"
+    "Microsoft.Azure.KeyVault": "2.0.6",
+    "Microsoft.AspNetCore.Cors": "1.1.0",
+    "Microsoft.IdentityModel.Clients.ActiveDirectory": "3.13.8"
   },
 
   "tools": {

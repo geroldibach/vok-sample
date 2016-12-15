@@ -36,8 +36,12 @@ namespace vok_web_api
         // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<ILieferscheinStore>(_ => new LieferscheinStore());
-            services.AddScoped<IRechnungStore>(_ => new RechnungStore());
+            var clientId = this.Configuration["KeyVault:ClientId"];
+            var clientSecret = this.Configuration["KeyVault:ClientSecret"];
+            var configurationReader = new KeyVaultConfigurationReader(clientId, "pcm-prototype", clientSecret);
+            services.AddScoped<ILieferscheinStore>(_ => new LieferscheinStore(configurationReader));
+            services.AddScoped<IRechnungStore>(_ => new RechnungStore(configurationReader));
+
 
             services.AddApplicationInsightsTelemetry(Configuration);
             services.AddMvc();
