@@ -4,7 +4,12 @@
 
 <div class="container">
     <div class="lieferscheine">
-        <app-lieferscheine (lieferantenname)="onLieferantennameChanged($event)"></app-lieferscheine>
+        <app-lieferscheine (lieferantenname)="onLieferantennameChanged($event)"
+            (lieferscheinIDs)="onLieferscheinIDsChanged($event)"></app-lieferscheine>
+    </div>
+
+    <div class="lieferschein-positionen">
+        <app-lieferschein-positionen [lieferscheinIDs]="lieferscheinIDs"></app-lieferschein-positionen>
     </div>
 
     <div class="rechnungen">

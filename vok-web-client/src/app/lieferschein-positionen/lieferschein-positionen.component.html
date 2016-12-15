@@ -1,0 +1,24 @@
+<table>
+    <thead>
+        <tr>
+            <th>LS#</th>
+            <th>LS Pos.#</th>
+            <th>Art.Nr.</th>
+            <th>Art.Bez</th>
+            <th>Netto</th>
+            <th>Brutto</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let ls of lieferscheinPositionen">
+            <td class="lieferscheinID">{{ ls.lieferscheinID }}</td>
+            <td class="lieferscheinPositionID">{{ ls.lieferscheinPositionID }}</td>
+            <td class="lieferantenmaterialnummer">{{ ls.lieferantenmaterialnummer }}</td>
+            <td class="artikelbezeichnung">{{ ls.artikelbezeichnung }}</td>
+            <td class="netto">{{ ls.netto | currency:'EUR':true:'1.2' }}</td>
+            <td class="brutto">{{ ls.brutto | currency:'EUR':true:'1.2' }}</td>
+            <td>???...</td>
+        </tr>
+    </tbody>
+</table>

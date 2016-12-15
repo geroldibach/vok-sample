@@ -18,3 +18,13 @@ td.summeNetto, td.summeBrutto {
     text-align: right;
     min-width: 40px;
 }
+
+td {
+    border: none;
+    padding: 0;
+    border-collapse: collapse;
+}
+
+.selected {
+    background-color: lightgray;
+}

@@ -41,6 +41,7 @@ namespace vok_web_api
             var configurationReader = new KeyVaultConfigurationReader(clientId, "pcm-prototype", clientSecret);
             services.AddScoped<ILieferscheinStore>(_ => new LieferscheinStore(configurationReader));
             services.AddScoped<IRechnungStore>(_ => new RechnungStore(configurationReader));
+            services.AddScoped<ILieferscheinPositionStore>(_ => new LieferscheinPositionStore(configurationReader));
 
             services.AddApplicationInsightsTelemetry(Configuration);
             services.AddMvc();

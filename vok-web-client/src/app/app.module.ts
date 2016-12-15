@@ -10,12 +10,15 @@ import { LieferscheineComponent } from './lieferscheine/lieferscheine.component'
 import { LieferscheinStoreService } from './lieferschein-store.service';
 import { RechnungStoreService } from './rechnung-store.service';
 import { RechnungenComponent } from './rechnungen/rechnungen.component';
+import { LieferscheinPositionenComponent } from './lieferschein-positionen/lieferschein-positionen.component';
+import { LieferscheinPositionStoreService } from './lieferschein-position-store.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LieferscheineComponent,
-    RechnungenComponent
+    RechnungenComponent,
+    LieferscheinPositionenComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,8 @@ import { RechnungenComponent } from './rechnungen/rechnungen.component';
   ],
   providers: [
     LieferscheinStoreService,
-    RechnungStoreService
+    RechnungStoreService,
+    LieferscheinPositionStoreService
   ],
   bootstrap: [AppComponent]
 })

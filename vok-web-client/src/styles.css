@@ -5,8 +5,8 @@
 html, body {
   height: 100%;
   margin: 0;
-  overflow-y: hidden;
-  overflow-x: hidden;
+  /*overflow-y: hidden;
+  overflow-x: hidden;*/
 }
 
 div {
@@ -29,7 +29,7 @@ div {
   height: calc(100% - 51px);
 }
 
-.lieferscheine, .rechnungen {
+.lieferscheine, .rechnungen, .lieferschein-positionen {
   display: table-cell;
-  width: 50%;
+  width: 33%;
 }

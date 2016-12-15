@@ -1,24 +1,27 @@
-<button type="button" (click)="loadLieferscheine()">Aktualisieren</button>
+<!--<button type="button" (click)="loadLieferscheine()">Aktualisieren</button>-->
 <!--<kendo-grid id="lieferscheine-grid" [data]="lieferscheine" [scrollable]="true" [height]="250"></kendo-grid>-->
 <table>
     <thead>
         <tr>
+            <th>&nbsp;</th>
             <th>LS#</th>
             <th>Lief.Name</th>
             <th>Termin</th>
             <th>Netto</th>
             <th>Brutto</th>
-            <th>&nbsp;</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let ls of lieferscheine">
+            <td>
+                <span *ngIf="!ls.selected" (click)="selectLieferschein(ls)">O</span>
+                <span *ngIf="ls.selected" (click)="selectLieferschein(ls)">X</span>
+            </td>
             <td class="lieferscheinnummer">{{ ls.lieferscheinnummer }}</td>
             <td class="lieferantenname">{{ ls.lieferantenname }}</td>
             <td class="liefertermin">{{ ls.liefertermin | date:'dd.MM.yyyy' }}</td>
             <td class="summeNetto">{{ ls.summeNetto | currency:'EUR':true:'1.2' }}</td>
             <td class="summeBrutto">{{ ls.summeBrutto | currency:'EUR':true:'1.2' }}</td>
-            <td (click)="selectLieferschein(ls)">Rechnungen...</td>
-        </tr>        
+        </tr>
     </tbody>
 </table>

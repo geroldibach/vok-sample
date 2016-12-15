@@ -16,7 +16,12 @@ export class RechnungenComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     const lieferantennameChange = changes["lieferantenname"]; 
     if (lieferantennameChange.currentValue !== lieferantennameChange.previousValue) {
-      this.loadRechnungen(lieferantennameChange.currentValue);
+      if (lieferantennameChange.currentValue === "") {
+        this.rechnungen = null;
+      }
+      else {
+        this.loadRechnungen(lieferantennameChange.currentValue);
+      }
     }
   }
 

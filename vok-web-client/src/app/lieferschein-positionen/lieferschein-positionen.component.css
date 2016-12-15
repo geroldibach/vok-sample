@@ -1,0 +1,24 @@
+table {
+    font-size: 6pt;
+}
+
+td.lieferscheinID {
+    min-width: 20px;
+}
+
+td.lieferscheinPositionID {
+    min-width: 20px;
+}
+
+td.lieferantenmaterialnummer {
+    min-width: 35px;
+}
+
+td.artikelbezeichnung {
+    min-width: 125px;
+}
+
+td.netto, td.brutto {
+    text-align: right;
+    min-width: 40px;
+}
